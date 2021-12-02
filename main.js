@@ -10,24 +10,27 @@ cnv.height = 400;
 let cloudImg = document.getElementById("cloudImg");
 let x1Cloud = 130;
 let x2Cloud = 170;
-let r = 20;
-let xSun
+let rSun = 20;
+let xxSun = 200;
+let ySun = 300;
 
 requestAnimationFrame(sunrise);
 
 function sunrise() {
     // Updating Elements
     // Animate until the clouds are off the canvas 
-    if (x1 > -100) {
-        x1 -= 5
+    if (x1Cloud > -100) {
+        x1Cloud -= 5
     }
 
-    if (x2 < 400) {
-        x2 += 5
+    if (x2Cloud < 400) {
+        x2Cloud += 5
     }
 
-    if (r < 50) {
-        r += 1;
+    if (rSun < 50) {
+        rSun += 1;
+        ySun -= 3;
+        
     }
     
     ctx.fillStyle = "blue";
@@ -35,7 +38,7 @@ function sunrise() {
 
     ctx.fillStyle = "red";
     ctx.beginPath();
-    ctx.arc(200, 300, r, 0, 2 * Math.PI);
+    ctx.arc(200, ySun, rSun, 0, 2 * Math.PI);
     ctx.fill(); // sun
 
     ctx.fillStyle = "green";
@@ -47,5 +50,4 @@ function sunrise() {
     ctx.drawImage(cloudImg, x2Cloud, 100) // cloud
 
     requestAnimationFrame(sunrise);
-
 }
