@@ -13,6 +13,7 @@ let x2Cloud = 170;
 let rSun = 20;
 let xxSun = 200;
 let ySun = 300;
+let sunBlue = 0;
 
 requestAnimationFrame(sunrise);
 
@@ -27,16 +28,18 @@ function sunrise() {
         x2Cloud += 5
     }
 
+    // Making the sun come up in the sky, get larger and turn from red to yellow
     if (rSun < 50) {
         rSun += 1;
         ySun -= 3;
-        
     }
-    
+
+    sunBlue++;
+
     ctx.fillStyle = "blue";
     ctx.fillRect(0, 0, 400, 300); // sky 
 
-    ctx.fillStyle = "red";
+    ctx.fillStyle = "rgb(255, " + sunBlue + ", 0)";
     ctx.beginPath();
     ctx.arc(200, ySun, rSun, 0, 2 * Math.PI);
     ctx.fill(); // sun
